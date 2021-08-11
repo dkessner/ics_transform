@@ -1,19 +1,11 @@
+//
+// ics_transform.js
+//
 
-
-
-// needs "type" : "module" in package.json for ES6 imports
 
 import ical from 'ical.js';
 import { icsObject } from './icsObject.js';
-
-/*
-// if not type:module, use require()
-let ical = require("ical.js");
-let fs = require("fs");
-*/
-
-
-let filename = "rotation.ics";
+// note: package.json needs "type":"module" for ES6 imports
 
 
 function getSummary(vevent)
@@ -97,10 +89,7 @@ function doTransformation()
         if (outputObject)
         {
             console.log(outputObject);
-            let s = ical.stringify(outputObject);
-            //let s = ical.stringify(icsObject);
-            console.log(s);
-            //console.log(ical.stringify(outputObject));
+            console.log(ical.stringify(outputObject));
         }
     }        
     catch (err) 
