@@ -1,10 +1,16 @@
 
 
-//import { parse } from 'ical';
-//import { readFileSync } from 'fs';
+/*
+// if "type" : "module" in package.json, can use ES6 imports
+import ical from 'ical.js';
+import { readFileSync } from 'fs';
+*/
 
+
+// if not type:module, use require()
 let ical = require("ical.js");
 let fs = require("fs");
+
 
 let filename = "rotation.ics";
 
@@ -20,7 +26,7 @@ function getSummary(vevent)
 
     for (const property of propertyList)
     {
-        [name, unknown, type, value] = property;
+        const [name, unknown, type, value] = property;
         if (name === "summary") return value;
     }
 
