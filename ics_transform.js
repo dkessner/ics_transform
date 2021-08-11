@@ -1,15 +1,16 @@
 
 
-/*
-// if "type" : "module" in package.json, can use ES6 imports
+
+// needs "type" : "module" in package.json for ES6 imports
+
 import ical from 'ical.js';
-import { readFileSync } from 'fs';
-*/
+import { icsObject } from './icsObject.js';
 
-
+/*
 // if not type:module, use require()
 let ical = require("ical.js");
 let fs = require("fs");
+*/
 
 
 let filename = "rotation.ics";
@@ -45,48 +46,37 @@ function testTransform(vevent)
 }
 
 
-function transform(ics)
+function transform(icsObject, transformation)
 {
-    let data;
+    // sanity check and unpack object
 
-    // parse the ical data
-
-    try 
-    {
-        data = ical.parse(ics);
-    }
-    catch (err) 
-    {
-        console.error("Error in ical.parse():" + err.message)
-        return;
-    }
-
-    if (data.length !== 3 || data[0] !== 'vcalendar')
+    if (icsObject.length !== 3 || icsObject[0] !== 'vcalendar')
     {
         console.log("Something's wrong!");
         return;
     }
 
-    const [vcalendar, header, eventArray] = data;
+    const [vcalendar, header, eventArray] = icsObject;
 
     // transform the event array
 
-    let outputEventArray = eventArray.map(testTransform);
+    let outputEventArray = eventArray.map(transformation);
     outputEventArray = outputEventArray.filter(item => item != null);
 
     let outputData = [vcalendar, header, outputEventArray];
 
-    return ical.stringify(outputData);
+    return outputData;
+
 }
 
 
-function transformFile(filename)
+function doTransformation()
 {
     try 
     {
-        const ics = fs.readFileSync(filename, 'utf8')
-        const output = transform(ics);
-        if (output) console.log(output);
+        const outputObject = transform(icsObject, testTransform);
+        if (outputObject)
+            console.log(ical.stringify(outputObject));
     }        
     catch (err) 
     {
@@ -95,5 +85,6 @@ function transformFile(filename)
 }
 
 
-transformFile(filename);
+doTransformation();
+
 
