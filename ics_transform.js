@@ -35,12 +35,31 @@ function getSummary(vevent)
 }
 
 
+function replaceSummary(vevent, search, replace)
+{
+    let propertyList = JSON.parse(JSON.stringify(vevent[1])); // deep copy
+
+    for (let i=0; i<propertyList.length; i++)
+    {
+        const [name, unknown, type, value] = propertyList[i];
+        if (name === "summary" && value === search) 
+        {
+            propertyList[i] = [name, unknown, type, replace];
+        }
+    }
+
+    return [vevent[0], propertyList, vevent[2]];
+}
+
+
 function testTransform(vevent)
 {
     const summary = getSummary(vevent);
     
     if (summary === "D")
-        return vevent;
+    {
+        return replaceSummary(vevent, "D", "D goo");
+    }
     else
         return null;
 }
@@ -76,7 +95,13 @@ function doTransformation()
     {
         const outputObject = transform(icsObject, testTransform);
         if (outputObject)
-            console.log(ical.stringify(outputObject));
+        {
+            console.log(outputObject);
+            let s = ical.stringify(outputObject);
+            //let s = ical.stringify(icsObject);
+            console.log(s);
+            //console.log(ical.stringify(outputObject));
+        }
     }        
     catch (err) 
     {
@@ -86,5 +111,7 @@ function doTransformation()
 
 
 doTransformation();
+
+
 
 
