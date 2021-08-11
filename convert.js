@@ -13,15 +13,15 @@ function icsToJSON(filename)
     {
         const ics = readFileSync(filename, 'utf8')
         let icsObject = ical.parse(ics);
-        return JSON.stringify(icsObject, null, 4)
+        return JSON.stringify(icsObject, null, 4);
     }        
     catch (err) 
     {
-        console.error(err.message)
+        console.error(err.message);
     }
 }
 
-const code = "const icsObject =\n" + icsToJSON(filename) + ";";
+const code = "export const icsObject =\n" + icsToJSON(filename) + ";";
 
 console.log(code);
 
