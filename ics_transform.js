@@ -47,15 +47,20 @@ function replaceSummary(vevent, search, replace)
 function searchReplace(vevent, schedule)
 {
     const period = getSummary(vevent);
-    
-    if (period in schedule)
+
+    if (!period) // e.g. timezone
+    {
+        return vevent;
+    }
+    else if (period in schedule)
     {
         return replaceSummary(vevent, period, schedule[period]);
     }
     else
+    {
         return null;
+    }
 }
-
 
 
 function transform(icsObject, transformation)
@@ -102,7 +107,6 @@ function doTransformation()
         const outputObject = transform(icsObject, testTransform);
         if (outputObject)
         {
-            console.log(outputObject);
             console.log(ical.stringify(outputObject));
         }
     }        
