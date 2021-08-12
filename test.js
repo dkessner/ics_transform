@@ -5,6 +5,9 @@
 
 import { doTransformation } from './ics_transform.js';
 
+import * as assert from 'assert-strict';
+
+
 const scheduleCD = 
 {
     C: "C CS Projects",
