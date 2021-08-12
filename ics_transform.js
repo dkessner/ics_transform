@@ -87,32 +87,18 @@ function transform(icsObject, transformation)
 }
 
 
-function doTransformation(schedule)
+export function doTransformation(schedule)
 {
     try 
     {
         let transformation = vevent => searchReplace(vevent, schedule);
-
         const outputObject = transform(icsObject, transformation);
-        if (outputObject)
-        {
-            console.log(ical.stringify(outputObject));
-        }
+        return ical.stringify(outputObject);
     }        
     catch (err) 
     {
         console.error(err.message)
     }
 }
-
-
-const myschedule = 
-{
-    C: "C CS Projects",
-    D: "D APCS"
-};
-
-
-doTransformation(myschedule);
 
 
