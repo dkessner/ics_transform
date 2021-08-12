@@ -5,7 +5,7 @@
     {%- assign page_paths = site.header_pages | default: default_paths -%}
     
     <a class="site-title" rel="author" href="{{ "/" | relative_url }}">
-        <img src="/assets/M.png" width="30em"/>&nbsp;&nbsp;{{ site.title | escape }}
+        <img src="{{ site.baseurl}}/assets/M.png" width="30em"/>&nbsp;&nbsp;{{ site.title | escape }}
     </a>
 
     {%- if page_paths -%}
