@@ -115,11 +115,13 @@ function transform(icsObject, transformation)
 }
 
 
-export function doTransformation(schedule)
+export function doTransformation(schedule, startTime, endTime)
 {
     try 
     {
-        let transformation = vevent => searchReplace(vevent, schedule);
+        const transformation = 
+            vevent => searchReplace(vevent, schedule, startTime, endTime);
+
         const outputObject = transform(icsObject, transformation);
         return ical.stringify(outputObject);
     }        

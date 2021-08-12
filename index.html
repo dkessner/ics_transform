@@ -10,7 +10,11 @@ const scheduleCD =
     D: "D APCS"
 };
 
-let icsCD = ics_transform.doTransformation(scheduleCD);
+const fall2021Start = "2021-08";
+const fall2021End = "2021-12-31";
+
+
+let icsCD = ics_transform.doTransformation(scheduleCD, fall2021Start, fall2021End);
 
 console.log(icsCD);
 
