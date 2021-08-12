@@ -5,7 +5,7 @@
 layout: default
 ---
 
-Create your own rotation calendar, with custom event descriptions.  
+Enter your custom event descriptions:
 
 <hr/>
 
@@ -21,8 +21,8 @@ Create your own rotation calendar, with custom event descriptions.
 </table>
 
 <table>
-<tr><td>begin</td><td><input type="date" name="begin" id="beginInput" value="2018-09-01"></td></tr>
-<tr><td>end</td><td><input type="date" name="end" value="2018-12-14"></td></tr>
+<tr><td>begin</td><td><input type="date" name="begin" id="beginInput" value="2021-08-30"></td></tr>
+<tr><td>end</td><td><input type="date" name="end" value="2022-05-31"></td></tr>
 </table>
 
 <input type="button" value="Generate calendar!" onclick="myFunction()">
@@ -33,42 +33,31 @@ Create your own rotation calendar, with custom event descriptions.
 </script>
 
 <hr/>
+<br/>
 
-<h2>Instructions</h2>
+## Instructions
 
-<p>
-This web page will generate a calendar file that you can import into your
-Google Calendar.
-</p>
+- Enter descriptions for the periods you want
+- Click the "Generate calendar!" button
+- Import the .ics file into your Google Calendar.
 
+<br/>
 
-<ol>
-    <li>Enter descriptions for the periods you want.</li>
-    <li>Click "Go!"</li>
-    <li>On the next page, download the file my_rotation.ics</li>
-    <li>Import my_rotation.ics into your Google Calendar.</li>
-</ol>
+## Google Calendar import details
 
+- Open Google Calendar in your browser
 
-<ol>
-    <li><b>Open your Google Calendar.</b></li>
-    <li><b>Create a new calendar.</b>
-        This step is recommended, but not necessary.  Creating a new
-        calendar will let you easily turn this calendar view on and off.
-        On the left sidebar, click the dropdown menu next to "My calendars"
-        and select "Create new calendar".  On the next page, give your new
-        calendar a name and save.
-    </li>
-    <li><b>Import my_rotation.ics.</b>
-        On the left sidebar, click the dropdown menu next to "Other
-        calendars" and select "Import calendar".  In the dialog box choose
-        the "my_rotation.ics" that you downloaded, and the calendar into
-        which you want to import.  Click "Import".
-    </li>
-</ol>
+- Create a new calendar (_recommended_)
+    - Creating a new calendar lets you easily turn the calendar view on/off,
+      and you can share it too.
+    - On the left sidebar, click the dropdown menu next to "My calendars" and
+      select "Create new calendar".  On the next page, give your new calendar a
+      name and save.
 
-Questions?  &nbsp; Email Dr. Kessner.
-
-<hr/>
-
+- Import the .ics file
+    - On the left sidebar, click the dropdown menu next to "Other calendars"
+      and select "Import calendar".  
+    - In the dialog box choose the .ics file, and the calendar into which you
+      want to import.
+    - Click "Import".
 
