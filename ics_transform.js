@@ -8,7 +8,32 @@ import { icsObject } from './icsObject.js';
 // note: package.json needs "type":"module" for ES6 imports
 
 
-function getSummary(vevent)
+//
+// from ical.js wiki:
+//   https://github.com/mozilla-comm/ical.js/wiki
+//
+// ["vcalendar",
+//   [
+//     ["calscale", {}, "text", "GREGORIAN"],
+//     ["prodid", {}, "text", "-//Example Inc.//Example Calendar//EN"],
+//     ["version", {}, "text", "2.0"]
+//   ],
+//   [
+//     ["vevent",
+//       [
+//         ["dtstamp", {}, "date-time", "2008-02-05T19:12:24Z"],
+//         ["dtstart", {}, "date", "2008-10-06"],
+//         ["summary", {}, "text", "Planning meeting"],
+//         ["uid", {}, "text", "4088E990AD89CB3DBB484909"]
+//       ],
+//       []
+//     ]
+//   ]
+// ]
+//
+
+
+function getValue(vevent, propertyName)
 {
     const ok = vevent.length === 3 &&
                vevent[0] === 'vevent';
@@ -20,7 +45,7 @@ function getSummary(vevent)
     for (const property of propertyList)
     {
         const [name, unknown, type, value] = property;
-        if (name === "summary") return value;
+        if (name === propertyName) return value;
     }
 
     return "";
@@ -44,15 +69,18 @@ function replaceSummary(vevent, search, replace)
 }
 
 
-function searchReplace(vevent, schedule)
+function searchReplace(vevent, schedule, startTime = "0", endTime = "2100")
 {
-    const period = getSummary(vevent);
+    const period = getValue(vevent, "summary");
+    const time = getValue(vevent, "dtstart");
 
     if (!period) // e.g. timezone
     {
         return vevent;
     }
-    else if (period in schedule)
+    else if (period in schedule &&
+             startTime <= time && 
+             time <= endTime)
     {
         return replaceSummary(vevent, period, schedule[period]);
     }
