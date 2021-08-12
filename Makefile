@@ -3,21 +3,20 @@
 #
 
 
-all: icsObject.js ics_transform_bundle.js test
+all: js/icsObject.js js/ics_transform_bundle.js test
 
 
-icsObject.js: convert.js rotation.ics
-	node convert.js > icsObject.js
+js/icsObject.js: js/convert.js js/rotation.ics
+	cd js && node convert.js > icsObject.js
 
-
-ics_transform_bundle.js: ics_transform.js icsObject.js
-	browserify ics_transform.js --standalone ics_transform -o ics_transform_bundle.js
+js/ics_transform_bundle.js: js/ics_transform.js js/icsObject.js
+	cd js && browserify ics_transform.js --standalone ics_transform -o ics_transform_bundle.js
 
 test:
-	node test.js
+	cd js && node test.js
 
 clean:
-	rm -rf ics_transform_bundle.js icsObject.js
+	rm -rf js/ics_transform_bundle.js js/icsObject.js
 
 
 .PHONY: all clean test
