@@ -5,7 +5,7 @@
 
 import { doTransformation } from './ics_transform.js';
 
-import * as assert from 'assert-strict';
+import { strict as assert } from 'assert';
 
 
 const scheduleCD = 
@@ -17,6 +17,8 @@ const scheduleCD =
 let icsCD = doTransformation(scheduleCD);
 
 const cPeriods = icsCD.match(/C CS Projects/g);
+assert.equal(cPeriods.length, 186); 
+
 if (cPeriods.length !== 186)
 {
     console.log("cPeriods.length:", cPeriods.length);

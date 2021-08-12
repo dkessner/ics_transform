@@ -10,12 +10,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "assert": "^2.0.0",
     "fs": "^0.0.1-security",
     "ical.js": "^1.4.0"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.15.0",
-    "assert-strict": "^0.0.2",
     "babel-core": "^6.26.3",
     "babelify": "^10.0.0"
   },
