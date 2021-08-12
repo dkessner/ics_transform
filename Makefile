@@ -3,7 +3,7 @@
 #
 
 
-all: js/icsObject.js js/ics_transform_bundle.js test
+all: node_modules js/icsObject.js js/ics_transform_bundle.js test
 
 js/icsObject.js: js/convert.js js/rotation.ics
 	cd js && node convert.js > icsObject.js
@@ -16,6 +16,10 @@ test:
 
 serve:
 	bundle exec jekyll serve --baseurl=''
+
+node_modules: package.json
+	@echo updating node_modules
+	npm install
 
 clean:
 	rm -rf js/ics_transform_bundle.js js/icsObject.js
