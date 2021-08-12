@@ -4,7 +4,6 @@
 
 
 import { doTransformation } from './ics_transform.js';
-
 import { strict as assert } from 'assert';
 
 
@@ -19,25 +18,12 @@ let icsCD = doTransformation(scheduleCD);
 const cPeriods = icsCD.match(/C CS Projects/g);
 assert.equal(cPeriods.length, 186); 
 
-if (cPeriods.length !== 186)
-{
-    console.log("cPeriods.length:", cPeriods.length);
-    process.exit(1);
-}
-
 const dPeriods = icsCD.match(/D APCS/g);
-if (dPeriods.length !== 186)
-{
-    console.log("dPeriods.length:", dPeriods.length);
-    process.exit(1);
-}
+assert.equal(dPeriods.length, 186);
 
 const cdPeriods = icsCD.match(/SUMMARY:/g);
-if (cdPeriods.length !== 372)
-{
-    console.log("cdPeriods.length:", cdPeriods.length);
-    process.exit(1);
-}
+assert.equal(cdPeriods.length, 372);
+
 
 const scheduleFI = 
 {
@@ -48,23 +34,11 @@ const scheduleFI =
 let icsFI = doTransformation(scheduleFI);
 
 const fPeriods = icsFI.match(/F MultiV/g);
-if (fPeriods.length !== 187)
-{
-    console.log("fPeriods.length:", fPeriods.length);
-    process.exit(1);
-}
+assert.equal(fPeriods.length, 187);
 
 const iPeriods = icsFI.match(/I PCHA/g);
-if (iPeriods.length !== 184)
-{
-    console.log("iPeriods.length:", iPeriods.length);
-    process.exit(1);
-}
+assert.equal(iPeriods.length, 184);
 
 const fiPeriods = icsFI.match(/SUMMARY:/g);
-if (fiPeriods.length !== 371)
-{
-    console.log("fiPeriods.length:", fiPeriods.length);
-    process.exit(1);
-}
+assert.equal(fiPeriods.length, 371);
 
