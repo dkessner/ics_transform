@@ -11,7 +11,7 @@ icsObject.js: convert.js rotation.ics
 
 
 ics_transform_bundle.js: ics_transform.js icsObject.js
-	browserify ics_transform.js -o ics_transform_bundle.js
+	browserify ics_transform.js --standalone ics_transform -o ics_transform_bundle.js
 
 test:
 	node test.js
