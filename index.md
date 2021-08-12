@@ -32,7 +32,8 @@ Enter your custom event descriptions:
 
 - Enter descriptions for the periods you want
 - Click the "Generate calendar!" button
-- Import the .ics file into your Google Calendar.
+- (_automatic_) Download / save `my_rotation.ics`
+- Import the `my_rotation.ics` into your Google Calendar.
 
 <br/>
 
@@ -40,18 +41,20 @@ Enter your custom event descriptions:
 
 - Open Google Calendar in your browser
 
-- Create a new calendar (_recommended_)
-    - Creating a new calendar lets you easily turn the calendar view on/off,
-      and you can share it too.
-    - On the left sidebar, click the dropdown menu next to "My calendars" and
-      select "Create new calendar".  On the next page, give your new calendar a
-      name and save.
+- Create a new calendar (_optional_)
+    - _Why?_ Creating a new calendar lets you easily turn the calendar view
+      on/off, and you can share it too.  You could create a calendar for each
+      class/course.
+    - Click the Settings icon, choose "Settings"
+    - (_left sidebar_) Click "Add calendar", "Create new calendar"
+    - Give your new calendar a name and click the "Create calendar" button 
 
-- Import the .ics file
-    - On the left sidebar, click the dropdown menu next to "Other calendars"
-      and select "Import calendar".  
-    - In the dialog box choose the .ics file, and the calendar into which you
-      want to import.
+
+- Import `my_rotation.ics`
+    - Go to / stay in the Settings page
+    - (_left sidebar_) Click "Import & export", "Import"
+    - Choose the calendar you want to add the events to, and select the
+        `my_rotation.ics` file that you saved
     - Click "Import".
 
 
