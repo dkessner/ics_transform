@@ -44,14 +44,8 @@ function replaceSummary(vevent, search, replace)
 }
 
 
-function testTransform(vevent)
+function searchReplace(vevent, schedule)
 {
-    const schedule = 
-    {
-        C: "C CS Projects",
-        D: "D APCS"
-    };
-
     const period = getSummary(vevent);
     
     if (period in schedule)
@@ -61,6 +55,7 @@ function testTransform(vevent)
     else
         return null;
 }
+
 
 
 function transform(icsObject, transformation)
@@ -84,6 +79,19 @@ function transform(icsObject, transformation)
 
     return outputData;
 
+}
+
+
+const myschedule = 
+{
+    C: "C CS Projects",
+    D: "D APCS"
+};
+
+
+function testTransform(vevent)
+{
+    return searchReplace(vevent, myschedule);
 }
 
 
