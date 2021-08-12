@@ -1,7 +1,4 @@
 ---
-# Feel free to add content and custom Front Matter to this file.
-# To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
-
 layout: default
 ---
 
@@ -21,17 +18,13 @@ Enter your custom event descriptions:
 </table>
 
 <table>
-<tr><td>begin</td><td><input type="date" name="begin" id="beginInput" value="2021-08-30"></td></tr>
-<tr><td>end</td><td><input type="date" name="end" value="2022-05-31"></td></tr>
+<tr><td>begin</td><td><input type="date" name="start" id="startTime" value="2021-08-30"></td></tr>
+<tr><td>end</td><td><input type="date" name="end" id="endTime" value="2022-05-31"></td></tr>
 </table>
 
-<input type="button" value="Generate calendar!" onclick="myFunction()">
+<input type="button" value="Generate calendar!" onclick="generateCalendar()">
 
-
-<script>
-            function myFunction() {window.alert("Hello, world!");}
-</script>
-
+<br/>
 <hr/>
 <br/>
 
@@ -60,4 +53,47 @@ Enter your custom event descriptions:
     - In the dialog box choose the .ics file, and the calendar into which you
       want to import.
     - Click "Import".
+
+
+<script src="js/ics_transform_bundle.js"></script>
+
+<script>
+
+
+function download(filename, text) 
+{
+    let element = document.createElement('a');
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+    element.setAttribute('download', filename);
+    element.style.display = 'none';
+
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
+}
+
+
+function generateCalendar() 
+{
+    let periods = ['B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'];
+    let schedule = {};
+
+    for (let period of periods)
+    {
+        let input = document.getElementById(period);
+        if (input.value)
+            schedule[period] = input.value;
+    }
+
+    let startTime = document.getElementById("startTime").value;
+    let endTime = document.getElementById("endTime").value;
+
+    let ics = ics_transform.doTransformation(schedule, startTime, endTime);
+
+    download("my_rotation.ics", ics);
+}
+
+</script>
+
+
 
