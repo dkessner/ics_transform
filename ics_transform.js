@@ -46,11 +46,17 @@ function replaceSummary(vevent, search, replace)
 
 function testTransform(vevent)
 {
-    const summary = getSummary(vevent);
-    
-    if (summary === "D")
+    const schedule = 
     {
-        return replaceSummary(vevent, "D", "D goo");
+        C: "C CS Projects",
+        D: "D APCS"
+    };
+
+    const period = getSummary(vevent);
+    
+    if (period in schedule)
+    {
+        return replaceSummary(vevent, period, schedule[period]);
     }
     else
         return null;
