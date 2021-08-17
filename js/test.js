@@ -66,6 +66,11 @@ assert.equal(dPeriods_21_22.length, 73);
 const cdPeriods_21_22 = icsCD_21_22.match(/SUMMARY:/g);
 assert.equal(cdPeriods_21_22.length, 146);
 
+const cdLocations_21_22 = icsCD_21_22.match(/LOCATION:D215/g);
+assert.equal(cdLocations_21_22.length, 73);
+
+const cdDescriptions_21_22 = icsCD_21_22.match(/DESCRIPTION:zoom link/g);
+assert.equal(cdDescriptions_21_22.length, 73);
 
 
 const scheduleFI = 
@@ -119,8 +124,12 @@ assert.equal(fPeriods_21_22.length, 73);
 const iPeriods_21_22 = icsFI_21_22.match(/I PCHA/g);
 assert.equal(iPeriods_21_22.length, 73);
 
-const ciPeriods_21_22 = icsFI_21_22.match(/SUMMARY:/g);
-assert.equal(ciPeriods_21_22.length, 146);
+const fiPeriods_21_22 = icsFI_21_22.match(/SUMMARY:/g);
+assert.equal(fiPeriods_21_22.length, 146);
 
+const fiLocations_21_22 = icsFI_21_22.match(/LOCATION:C221/g);
+assert.equal(fiLocations_21_22.length, 73);
 
+const fiDescriptions_21_22 = icsFI_21_22.match(/DESCRIPTION:zoom link 2/g);
+assert.equal(fiDescriptions_21_22.length, 73);
 

@@ -52,16 +52,16 @@ function getValue(vevent, propertyName)
 }
 
 
-function replaceValue(vevent, propertyName, search, replace)
+function replaceValues(vevent, replacements)
 {
     let propertyList = JSON.parse(JSON.stringify(vevent[1])); // deep copy
 
     for (let i=0; i<propertyList.length; i++)
     {
         const [name, unknown, type, value] = propertyList[i];
-        if (name === propertyName && value === search) 
+        if (name in replacements) 
         {
-            propertyList[i] = [name, unknown, type, replace];
+            propertyList[i] = [name, unknown, type, replacements[name]];
         }
     }
 
@@ -82,7 +82,7 @@ function searchReplace(vevent, schedule, startTime = "0", endTime = "2100")
              startTime <= time && 
              time <= endTime)
     {
-        return replaceValue(vevent, "summary", period, schedule[period]["summary"]);
+        return replaceValues(vevent, schedule[period]);
     }
     else
     {
