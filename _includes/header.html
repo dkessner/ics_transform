@@ -4,8 +4,9 @@
     {%- assign default_paths = site.pages | map: "path" -%}
     {%- assign page_paths = site.header_pages | default: default_paths -%}
     
+    <!--<a class="site-title" rel="author" href="{{ "/" | relative_url }}">-->
     <a class="site-title" rel="author" href="{{ "/" | relative_url }}">
-        <img src="{{ site.baseurl }}/assets/M.png" width="30em" style:"margin: 10px"; /><span>&nbsp;</span>{{ site.title | escape }}
+        <img src="{{ site.baseurl | relative_url }}/assets/M.png" width="30em" style:"margin: 10px"; /><span>&nbsp;</span>{{ site.title | escape }}
     </a>
 
     {%- if page_paths -%}
