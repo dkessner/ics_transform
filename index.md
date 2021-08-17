@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: page
 ---
 
 Enter your class info.  Anything you leave blank will be ignored.

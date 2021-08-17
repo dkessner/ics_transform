@@ -115,6 +115,10 @@ a {
     text-decoration: underline;
   }
 
+  &.site-title:hover {
+    text-decoration: none;
+  }
+
   .social-media-list &:hover {
     text-decoration: none;
 
