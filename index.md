@@ -42,10 +42,13 @@ td {
 3. Import `my_rotation.ics` into your Google Calendar
 
 <br/>
+<hr/>
+<br/>
 
-### Google Calendar detailed instructions (step #3)
 
-#### Create a new calendar (_optional_)
+## Google Calendar detailed instructions (step #3 above)
+
+### Create a new calendar (_optional_)
 
 - _Why?_ Creating a new calendar lets you easily turn the calendar view
   on/off, and you can share it too.  You could create a calendar for each
@@ -56,13 +59,14 @@ td {
 
 
 
-#### Import `my_rotation.ics`
+### Import `my_rotation.ics`
 
 - Go to (or stay in) the Settings page in Google Calendar
 - (_left sidebar_) Click "Import & export", "Import"
 - Choose the calendar you want to add the events to, and select the
     `my_rotation.ics` file that you saved
 - Click "Import".
+
 
 
 <script src="js/ics_transform_bundle.js"></script>
