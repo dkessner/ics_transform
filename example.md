@@ -7,7 +7,7 @@ permalink: /example/
 I find it convenient to include the period with the class name, and you
 can put things like Zoom links in the description.
 
-<img src="{{ site.baseurl }}/assets/screenshot.png"/>
+<img src="{{ "/assets/screenshot.png" | relative_url }}"/>
 
 <br/>
 <hr/>
@@ -16,7 +16,6 @@ can put things like Zoom links in the description.
 Here's the imported calendar (in orange) together with the Rotation calendar
 (grey).
 
-<img src="{{ site.baseurl }}/assets/screenshot2.png"/>
-
+<img src="{{ "/assets/screenshot2.png" | relative_url }}"/>
 
 
