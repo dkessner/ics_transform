@@ -21,8 +21,15 @@ node_modules: package.json
 	@echo updating node_modules
 	npm install
 
+rotation.zip:
+	bundle exec jekyll build --baseurl='rotation'
+	mv _site rotation
+	zip -r rotation.zip rotation
+
+zip: rotation.zip
+
 clean:
-	rm -rf js/ics_transform_bundle.js js/icsObject.js
+	rm -rf js/ics_transform_bundle.js js/icsObject.js rotation.zip rotation
 
 
-.PHONY: all clean test
+.PHONY: all clean test zip
