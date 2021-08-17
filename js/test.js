@@ -14,8 +14,8 @@ const spring22End = "2022-06";
 
 const scheduleCD = 
 {
-    C: "C CS Projects",
-    D: "D APCS"
+    C: {summary: "C CS Projects", description: "zoom link"},
+    D: {summary: "D APCS", "location": "D215"}
 };
 
 
@@ -70,8 +70,8 @@ assert.equal(cdPeriods_21_22.length, 146);
 
 const scheduleFI = 
 {
-    I: "I PCHA",
-    F: "F MultiV"
+    I: {summary: "I PCHA", "location": "C221"},
+    F: {summary: "F MultiV", description: "zoom link 2"}
 };
 
 
