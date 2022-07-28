@@ -22,13 +22,13 @@ const scheduleCD =
 const icsCD = doTransformation(scheduleCD);
 
 const cPeriods = icsCD.match(/C CS Projects/g);
-assert.equal(cPeriods.length, 186); 
+assert.equal(cPeriods.length, 257); 
 
 const dPeriods = icsCD.match(/D APCS/g);
-assert.equal(dPeriods.length, 186);
+assert.equal(dPeriods.length, 257);
 
 const cdPeriods = icsCD.match(/SUMMARY:/g);
-assert.equal(cdPeriods.length, 372);
+assert.equal(cdPeriods.length, 514);
 
 
 const icsCD_fall21 = doTransformation(scheduleCD, fall21Start, fall21End);
@@ -46,31 +46,31 @@ assert.equal(cdPeriods_fall21.length, 64);
 const icsCD_spring22 = doTransformation(scheduleCD, spring22Start, spring22End);
 
 const cPeriods_spring22 = icsCD_spring22.match(/C CS Projects/g);
-assert.equal(cPeriods_spring22.length, 41);
+assert.equal(cPeriods_spring22.length, 40);
 
 const dPeriods_spring22 = icsCD_spring22.match(/D APCS/g);
-assert.equal(dPeriods_spring22.length, 41);
+assert.equal(dPeriods_spring22.length, 40);
 
 const cdPeriods_spring22 = icsCD_spring22.match(/SUMMARY:/g);
-assert.equal(cdPeriods_spring22.length, 82);
+assert.equal(cdPeriods_spring22.length, 80);
 
 
 const icsCD_21_22 = doTransformation(scheduleCD, fall21Start, spring22End);
 
 const cPeriods_21_22 = icsCD_21_22.match(/C CS Projects/g);
-assert.equal(cPeriods_21_22.length, 73);
+assert.equal(cPeriods_21_22.length, 72);
 
 const dPeriods_21_22 = icsCD_21_22.match(/D APCS/g);
-assert.equal(dPeriods_21_22.length, 73);
+assert.equal(dPeriods_21_22.length, 72);
 
 const cdPeriods_21_22 = icsCD_21_22.match(/SUMMARY:/g);
-assert.equal(cdPeriods_21_22.length, 146);
+assert.equal(cdPeriods_21_22.length, 144);
 
 const cdLocations_21_22 = icsCD_21_22.match(/LOCATION:D215/g);
-assert.equal(cdLocations_21_22.length, 73);
+assert.equal(cdLocations_21_22.length, 72);
 
 const cdDescriptions_21_22 = icsCD_21_22.match(/DESCRIPTION:zoom link/g);
-assert.equal(cdDescriptions_21_22.length, 73);
+assert.equal(cdDescriptions_21_22.length, 72);
 
 
 const scheduleFI = 
@@ -83,13 +83,13 @@ const scheduleFI =
 const icsFI = doTransformation(scheduleFI);
 
 const fPeriods = icsFI.match(/F MultiV/g);
-assert.equal(fPeriods.length, 187);
+assert.equal(fPeriods.length, 257);
 
 const iPeriods = icsFI.match(/I PCHA/g);
-assert.equal(iPeriods.length, 184);
+assert.equal(iPeriods.length, 255);
 
 const fiPeriods = icsFI.match(/SUMMARY:/g);
-assert.equal(fiPeriods.length, 371);
+assert.equal(fiPeriods.length, 512);
 
 
 const icsFI_fall21 = doTransformation(scheduleFI, fall21Start, fall21End);
@@ -107,29 +107,67 @@ assert.equal(fiPeriods_fall21.length, 64);
 const icsFI_spring22 = doTransformation(scheduleFI, spring22Start, spring22End);
 
 const fPeriods_spring22 = icsFI_spring22.match(/F MultiV/g);
-assert.equal(fPeriods_spring22.length, 41);
+assert.equal(fPeriods_spring22.length, 40);
 
 const iPeriods_spring22 = icsFI_spring22.match(/I PCHA/g);
-assert.equal(iPeriods_spring22.length, 41);
+assert.equal(iPeriods_spring22.length, 40);
 
 const fiPeriods_spring22 = icsFI_spring22.match(/SUMMARY:/g);
-assert.equal(fiPeriods_spring22.length, 82);
+assert.equal(fiPeriods_spring22.length, 80);
 
 
 const icsFI_21_22 = doTransformation(scheduleFI, fall21Start, spring22End);
 
 const fPeriods_21_22 = icsFI_21_22.match(/F MultiV/g);
-assert.equal(fPeriods_21_22.length, 73);
+assert.equal(fPeriods_21_22.length, 72);
 
 const iPeriods_21_22 = icsFI_21_22.match(/I PCHA/g);
-assert.equal(iPeriods_21_22.length, 73);
+assert.equal(iPeriods_21_22.length, 72);
 
 const fiPeriods_21_22 = icsFI_21_22.match(/SUMMARY:/g);
-assert.equal(fiPeriods_21_22.length, 146);
+assert.equal(fiPeriods_21_22.length, 144);
 
 const fiLocations_21_22 = icsFI_21_22.match(/LOCATION:C221/g);
-assert.equal(fiLocations_21_22.length, 73);
+assert.equal(fiLocations_21_22.length, 72);
 
 const fiDescriptions_21_22 = icsFI_21_22.match(/DESCRIPTION:zoom link 2/g);
-assert.equal(fiDescriptions_21_22.length, 73);
+assert.equal(fiDescriptions_21_22.length, 72);
+
+
+//
+// 2022-23
+//
+
+
+const fall22Start = "2022-08";
+const fall22End = "2022-12-31";
+
+const spring23Start = "2023";
+const spring23End = "2023-06";
+
+
+const icsCD_fall22 = doTransformation(scheduleCD, fall22Start, fall22End);
+
+const cPeriods_fall22 = icsCD_fall22.match(/C CS Projects/g);
+assert.equal(cPeriods_fall22.length, 31);
+
+const dPeriods_fall22 = icsCD_fall22.match(/D APCS/g);
+assert.equal(dPeriods_fall22.length, 31);
+
+const cdPeriods_fall22 = icsCD_fall22.match(/SUMMARY:/g);
+assert.equal(cdPeriods_fall22.length, 62);
+
+
+const icsCD_spring23 = doTransformation(scheduleCD, spring23Start, spring23End);
+
+const cPeriods_spring23 = icsCD_spring23.match(/C CS Projects/g);
+assert.equal(cPeriods_spring23.length, 41);
+
+const dPeriods_spring23 = icsCD_spring23.match(/D APCS/g);
+assert.equal(dPeriods_spring23.length, 41);
+
+const cdPeriods_spring23 = icsCD_spring23.match(/SUMMARY:/g);
+assert.equal(cdPeriods_spring23.length, 82);
+
+
 
