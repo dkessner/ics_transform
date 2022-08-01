@@ -83,13 +83,13 @@ const scheduleFI =
 const icsFI = doTransformation(scheduleFI);
 
 const fPeriods = icsFI.match(/F MultiV/g);
-assert.equal(fPeriods.length, 257);
+assert.equal(fPeriods.length, 258);
 
 const iPeriods = icsFI.match(/I PCHA/g);
 assert.equal(iPeriods.length, 255);
 
 const fiPeriods = icsFI.match(/SUMMARY:/g);
-assert.equal(fiPeriods.length, 512);
+assert.equal(fiPeriods.length, 513);
 
 
 const icsFI_fall21 = doTransformation(scheduleFI, fall21Start, fall21End);
