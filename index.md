@@ -25,8 +25,8 @@ td {
 </table>
 
 <table>
-<tr><td>Start Date</td><td><input type="date" name="start" id="startTime" value="2023-08-28"></td></tr>
-<tr><td>End Date</td><td><input type="date" name="end" id="endTime" value="2024-06-15"></td></tr>
+<tr><td>Start Date</td><td><input type="date" name="start" id="startTime" value="2024-08-26"></td></tr>
+<tr><td>End Date</td><td><input type="date" name="end" id="endTime" value="2025-06-15"></td></tr>
 </table>
 
 <input type="button" value="Generate calendar!" onclick="generateCalendar()">

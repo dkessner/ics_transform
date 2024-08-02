@@ -194,10 +194,10 @@ const spring24End = "2024-06";
 const icsCD_fall23 = doTransformation(scheduleCD, fall23Start, fall23End);
 
 const cPeriods_fall23 = icsCD_fall23.match(/C CS Projects/g);
-assert.equal(cPeriods_fall23.length, 33);
+assert.equal(cPeriods_fall23.length, 32);
 
 const dPeriods_fall23 = icsCD_fall23.match(/D APCS/g);
-assert.equal(dPeriods_fall23.length, 32);
+assert.equal(dPeriods_fall23.length, 33);
 
 const cdPeriods_fall23 = icsCD_fall23.match(/SUMMARY:/g);
 assert.equal(cdPeriods_fall23.length, 65);
@@ -213,5 +213,48 @@ assert.equal(dPeriods_spring24.length, 42);
 
 const cdPeriods_spring24 = icsCD_spring24.match(/SUMMARY:/g);
 assert.equal(cdPeriods_spring24.length, 84);
+
+
+// 
+// 2024-25
+//
+
+
+const fall24Start = "2024-08";
+const fall24End = "2024-12-31";
+
+const spring25Start = "2025";
+const spring25End = "2025-06";
+
+const scheduleGH = 
+{
+    G: {summary: "G APCS", description: "blah blah"},
+    H: {summary: "H CS Projects", "location": "D215"}
+};
+
+
+const icsGH_fall24 = doTransformation(scheduleGH, fall24Start, fall24End);
+
+const gPeriods_fall24 = icsGH_fall24.match(/G APCS/g);
+assert.equal(gPeriods_fall24.length, 34);
+
+const hPeriods_fall24 = icsGH_fall24.match(/H CS Projects/g);
+assert.equal(hPeriods_fall24.length, 34);
+
+const ghPeriods_fall24 = icsGH_fall24.match(/SUMMARY:/g);
+assert.equal(ghPeriods_fall24.length, 68);
+
+
+const icsGH_spring24 = doTransformation(scheduleGH, spring24Start, spring24End);
+
+const gPeriods_spring24 = icsGH_spring24.match(/G APCS/g);
+assert.equal(gPeriods_spring24.length, 41);
+
+const hPeriods_spring24 = icsGH_spring24.match(/H CS Projects/g);
+assert.equal(hPeriods_spring24.length, 41);
+
+const ghPeriods_spring24 = icsGH_spring24.match(/SUMMARY:/g);
+assert.equal(ghPeriods_spring24.length, 82);
+
 
 
