@@ -56,6 +56,9 @@ function replaceValues(vevent, replacements)
 {
     let propertyList = JSON.parse(JSON.stringify(vevent[1])); // deep copy
 
+    // hack: keep track of fields we don't replace
+    let leftovers = Object.keys(replacements);
+
     for (let i=0; i<propertyList.length; i++)
     {
         const [name, unknown, type, value] = propertyList[i];
@@ -63,6 +66,16 @@ function replaceValues(vevent, replacements)
         {
             propertyList[i] = [name, unknown, type, replacements[name]];
         }
+
+        // remove index from leftovers list
+        const index = leftovers.indexOf(name);
+        if (index > -1) {
+          leftovers.splice(index, 1);
+        }
+    }
+
+    for (const name of leftovers) {
+        propertyList.push([name, {}, 'text', replacements[name]]);
     }
 
     return [vevent[0], propertyList, vevent[2]];

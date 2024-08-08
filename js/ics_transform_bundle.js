@@ -84,6 +84,9 @@ function getValue(vevent, propertyName) {
 
 function replaceValues(vevent, replacements) {
   var propertyList = JSON.parse(JSON.stringify(vevent[1])); // deep copy
+  // hack: keep track of fields we don't replace
+
+  var leftovers = Object.keys(replacements);
 
   for (var i = 0; i < propertyList.length; i++) {
     var _propertyList$i = _slicedToArray(propertyList[i], 4),
@@ -94,7 +97,19 @@ function replaceValues(vevent, replacements) {
 
     if (name in replacements) {
       propertyList[i] = [name, unknown, type, replacements[name]];
+    } // remove index from leftovers list
+
+
+    var index = leftovers.indexOf(name);
+
+    if (index > -1) {
+      leftovers.splice(index, 1);
     }
+  }
+
+  for (var _i2 = 0, _leftovers = leftovers; _i2 < _leftovers.length; _i2++) {
+    var _name = _leftovers[_i2];
+    propertyList.push([_name, {}, 'text', replacements[_name]]);
   }
 
   return [vevent[0], propertyList, vevent[2]];
