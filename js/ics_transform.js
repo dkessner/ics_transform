@@ -108,7 +108,7 @@ function transform(icsObject, transformation)
 {
     // sanity check and unpack object
 
-    if (icsObject.length !== 3 || icsObject[0] !== 'vcalendar')
+    if (icsObject.length !== 3 || !icsObject[0].startsWith('vcalendar'))
     {
         console.log("Something's wrong!");
         return;
