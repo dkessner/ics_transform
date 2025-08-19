@@ -258,3 +258,48 @@ assert.equal(ghPeriods_spring24.length, 82);
 
 
 
+// 
+// 2025-26
+//
+
+
+const fall25Start = "2025-08";
+const fall25End = "2025-12-31";
+
+const spring26Start = "2026";
+const spring26End = "2026-06";
+
+const scheduleBD = 
+{
+    B: {summary: "B CS Projects", description: "blah blah"},
+    D: {summary: "D APCS", "location": "D215"}
+};
+
+
+const icsBD_fall25 = doTransformation(scheduleBD, fall25Start, fall25End);
+
+const bPeriods_fall25 = icsBD_fall25.match(/B CS Projects/g);
+assert.equal(bPeriods_fall25.length, 33);
+
+const dPeriods_fall25 = icsBD_fall25.match(/D APCS/g);
+assert.equal(dPeriods_fall25.length, 33);
+
+const bdPeriods_fall25 = icsBD_fall25.match(/SUMMARY:/g);
+assert.equal(bdPeriods_fall25.length, 66);
+
+
+
+const icsBD_spring25 = doTransformation(scheduleBD, spring25Start, spring25End);
+
+const bPeriods_spring25 = icsBD_spring25.match(/B CS Projects/g);
+assert.equal(bPeriods_spring25.length, 40);
+
+const dPeriods_spring25 = icsBD_spring25.match(/D APCS/g);
+assert.equal(dPeriods_spring25.length, 40);
+
+const bdPeriods_spring25 = icsBD_spring25.match(/SUMMARY:/g);
+assert.equal(bdPeriods_spring25.length, 80);
+
+
+
+
