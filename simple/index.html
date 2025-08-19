@@ -47,8 +47,8 @@ td {
 </table>
 
 <table>
-<tr><td>Start Date</td><td><input type="date" name="start" id="startTime" value="2024-08-26"></td></tr>
-<tr><td>End Date</td><td><input type="date" name="end" id="endTime" value="2025-06-15"></td></tr>
+<tr><td>Start Date</td><td><input type="date" name="start" id="startTime" value="2025-08-25"></td></tr>
+<tr><td>End Date</td><td><input type="date" name="end" id="endTime" value="2026-06-15"></td></tr>
 </table>
 
 <input type="button" value="Generate calendar!" onclick="generateCalendar()">
@@ -162,6 +162,7 @@ function generateCalendar()
     let endTime = document.getElementById("endTime").value;
 
     let ics = ics_transform.doTransformation(schedule, startTime, endTime);
+    console.log(ics);
 
     download("my_rotation.ics", ics);
 }
