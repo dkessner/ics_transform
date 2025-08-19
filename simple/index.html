@@ -1,0 +1,174 @@
+<html>
+
+<head>
+<link rel="stylesheet" href="simple.css">
+<link rel="stylesheet" href="custom.css">
+</head>
+
+<body>
+
+    <div class="header">
+        <div class="header-logo">
+            <img src="M.png"/>
+        </div>
+        <div class="header-text">
+        <h1>Rotation Calendar Tool</h1>
+        <p>
+        Generate your own rotation calendar with custom event descriptions.
+        </p>
+        </div>
+    </div>
+
+    <p>
+    Enter your class info.  Anything you leave blank will be ignored.
+    </p>
+
+<br/>
+<hr/>
+<br/>
+
+<style>
+td {
+    text-align: center;
+}
+</style>
+
+
+<table>
+<tr><td></td><td>Class</td><td>Location</td><td>Description</td></tr>
+<tr><td>B</td><td><input type="text" id="B" size="20%"></td><td><input type="text" id="B_location" size="10%"></td><td><input type="text" id="B_description" size="30%"></td></tr>
+<tr><td>C</td><td><input type="text" id="C" size="20%"></td><td><input type="text" id="C_location" size="10%"></td><td><input type="text" id="C_description" size="30%"></td></tr>
+<tr><td>D</td><td><input type="text" id="D" size="20%"></td><td><input type="text" id="D_location" size="10%"></td><td><input type="text" id="D_description" size="30%"></td></tr>
+<tr><td>E</td><td><input type="text" id="E" size="20%"></td><td><input type="text" id="E_location" size="10%"></td><td><input type="text" id="E_description" size="30%"></td></tr>
+<tr><td>F</td><td><input type="text" id="F" size="20%"></td><td><input type="text" id="F_location" size="10%"></td><td><input type="text" id="F_description" size="30%"></td></tr>
+<tr><td>G</td><td><input type="text" id="G" size="20%"></td><td><input type="text" id="G_location" size="10%"></td><td><input type="text" id="G_description" size="30%"></td></tr>
+<tr><td>H</td><td><input type="text" id="H" size="20%"></td><td><input type="text" id="H_location" size="10%"></td><td><input type="text" id="H_description" size="30%"></td></tr>
+<tr><td>I</td><td><input type="text" id="I" size="20%"></td><td><input type="text" id="I_location" size="10%"></td><td><input type="text" id="I_description" size="30%"></td></tr>
+</table>
+
+<table>
+<tr><td>Start Date</td><td><input type="date" name="start" id="startTime" value="2024-08-26"></td></tr>
+<tr><td>End Date</td><td><input type="date" name="end" id="endTime" value="2025-06-15"></td></tr>
+</table>
+
+<input type="button" value="Generate calendar!" onclick="generateCalendar()">
+
+<br/>
+<hr/>
+<br/>
+
+<h2>Instructions</h2>
+
+<ol>
+    <li>Fill out the form above</li>
+    <li>Click the "Generate calendar!" button to download / save `my_rotation.ics`</li>
+    <li>Import `my_rotation.ics` into your Google Calendar</li>
+</ol>
+
+<br/>
+<hr/>
+<br/>
+
+
+<h2>Detailed instructions (step #3 above)</h2>
+
+<h3>Create a new calendar (optional)</h3>
+
+<ul>
+    <li>Why? Creating a new calendar lets you easily turn the calendar view
+        on/off, and you can share it too.  You could create a calendar for each
+        class/course.</li>
+    <li>Why not? Only events in your main calendar are visible to others for scheduling.</li>
+    <li>Click the Settings icon, choose "Settings"</li>
+    <li>(left sidebar) Click "Add calendar", "Create new calendar"</li>
+    <li>Give your new calendar a name and click the "Create calendar" button
+    </li>
+</ul>
+
+
+<h3>Import `my_rotation.ics`</h3>
+
+<li>Go to (or stay in) the Settings page in Google Calendar</li>
+<li>(left sidebar) Click "Import & export", "Import"</li>
+<li>Choose the calendar you want to add the events to, and select the
+    `my_rotation.ics` file that you saved</li>
+<li>Click "Import".</li>
+
+
+<h2>About</h2>
+
+<p>
+This project relies solely on open source software and tools, including:
+</p>
+
+<li><a href="https://nodejs.org/">Node</a> for command-line Javascript development and testing</li>
+<li><a href="https://browserify.org/">Browserify</a> for running in the web browser</li>
+<li><a href="https://github.com/mozilla-comm/ical.js/">ical.js</a> library for parsing iCal data</li>
+
+<p>
+To learn more about open source software, public data, and open educational
+resources for teachers:  
+<a href="https://dkessner.github.io/TeacherResources/">https://dkessner.github.io/TeacherResources/</a>
+</p>
+
+<p>
+Questions?
+Email <a href="mailto:Darren.Kessner@marlborough.org">Darren.Kessner@marlborough.org</a>
+</p>
+
+
+<script src="js/ics_transform_bundle.js"></script>
+
+<script>
+
+
+function download(filename, text) 
+{
+    let element = document.createElement('a');
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+    element.setAttribute('download', filename);
+    element.style.display = 'none';
+
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
+}
+
+
+function generateCalendar() 
+{
+    let periods = ['B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'];
+    let schedule = {};
+
+    for (let period of periods)
+    {
+        let inputClass = document.getElementById(period);
+        if (inputClass.value)
+        {
+            schedule[period] = {};
+            schedule[period]["summary"] = inputClass.value;
+
+            let inputLocation = document.getElementById(period + "_location");
+            if (inputLocation)
+                schedule[period]["location"] = inputLocation.value;
+
+            let inputDescription = document.getElementById(period + "_description");
+            if (inputDescription)
+                schedule[period]["description"] = inputDescription.value;
+        }
+    }
+
+    let startTime = document.getElementById("startTime").value;
+    let endTime = document.getElementById("endTime").value;
+
+    let ics = ics_transform.doTransformation(schedule, startTime, endTime);
+
+    download("my_rotation.ics", ics);
+}
+
+</script>
+
+</body>
+</html>
+
+
